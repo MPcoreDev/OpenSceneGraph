@@ -62,7 +62,7 @@ ELSEIF(APPLE)
     IF(OSG_BUILD_PLATFORM_IPHONE)
 
       IF(DEFINED CMAKE_TOOLCHAIN_FILE)
-        SET (IPHONE_ENABLE_BITCODE ${ENABLED_BITCODE})
+        SET (IPHONE_ENABLE_BITCODE ${ENABLE_BITCODE})
         SET (IPHONE_SDKVER "${IOS_SDK_VERSION}")
         SET (IPHONE_VERSION_MIN "${IOS_DEPLOYMENT_TARGET}")
         SET (IPHONE_SDKROOT "${CMAKE_OSX_SYSROOT}")
@@ -79,13 +79,13 @@ ELSEIF(APPLE)
         # get full path to sdk from requested versions
         SET (IPHONE_DEVROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer")
         SET (IPHONE_SDKROOT "${IPHONE_DEVROOT}/SDKs/iPhoneOS${IPHONE_SDKVER}.sdk")
-
+        
         # optionally enable bitcode for the build
         SET (IPHONE_ENABLE_BITCODE "NO" CACHE STRING "IOS Enable Bitcode")
 
         # seamless toggle between device and simulator
         SET(CMAKE_XCODE_EFFECTIVE_PLATFORMS "-iphoneos;-iphonesimulator")
-
+          
         # set deployment target to min version
         SET(CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET "${IPHONE_VERSION_MIN}" CACHE STRING "Deployment target for iOS" FORCE)
 
