@@ -213,10 +213,14 @@ DWORD GetFilePosU(HANDLE hfout)
   return ftell(hfout);
 }
 
+namespace {
+
 bool FileExists(const TCHAR *fn)
 { struct stat st;
   int res=stat(fn,&st);
   return (res==0);
+}
+
 }
 
 FILETIME dosdatetime2filetime(WORD dosdate,WORD dostime)
@@ -269,9 +273,14 @@ FILETIME dosdatetime2filetime(WORD dosdate,WORD dostime)
   return ft;
 }
 
+namespace {
+
 bool FileExists(const TCHAR *fn)
 { return (GetFileAttributes(fn)!=0xFFFFFFFF);
 }
+
+}
+
 #endif
 // ----------------------------------------------------------------------
 
